@@ -35,7 +35,7 @@ class LocationService {
         longitude: userLocation.longitude!,
       );
     } catch (e) {
-      print('can not get location');
+      print('can not get location::: $e');
     }
 
     return _currentUserLocation;
