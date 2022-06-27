@@ -1,6 +1,3 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:my_app_flutter/service/location_service.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app_flutter/datamodels/user_location.dart';
@@ -25,12 +22,11 @@ class Map extends StatelessWidget {
           ),
           TextButton(
             onPressed: () async {
-              final test = await LocationService().getLocation();
-              print('!!!! ${test.latitude}, ${test.longitude}');
+              // var test = await LocationService().getLocation();
             },
-            child: Text(
-              string,
-              style: const TextStyle(
+            child: const Text(
+              'Test getLocation',
+              style: TextStyle(
                 fontSize: 20,
               ),
             ),
