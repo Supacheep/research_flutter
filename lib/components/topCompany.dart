@@ -1,5 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:my_app_flutter/screens/jobList.dart';
+import 'package:my_app_flutter/views/jobList.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+
+const QUERY = """
+  query (\$filter: BannerFilter, \$isShuffle: Boolean, \$limit: Int, \$page: Int){
+    getBanner(filter: \$filter, isShuffle: \$isShuffle, limit: \$limit, page: \$page) {
+      data {
+        id
+        companyID
+        jobID
+        landingPageID
+        targetType
+        url
+        imagePath {
+          app
+        }
+        company {
+          logo
+          name
+        }
+      }
+    }
+  }
+""";
 
 class CompanyView extends StatelessWidget {
   const CompanyView({
@@ -78,13 +101,52 @@ class TopCompany extends StatelessWidget {
         ),
         SizedBox(
           height: 110,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: urls.length,
-            itemBuilder: (context, index) {
-              return CompanyView(
-                source: urls[index],
+          // child: ListView.builder(
+          //   shrinkWrap: true,
+          //   scrollDirection: Axis.horizontal,
+          //   itemCount: urls.length,
+          //   itemBuilder: (context, index) {
+          //     return CompanyView(
+          //       source: urls[index],
+          //     );
+          //   },
+          // ),
+          child: Query(
+            options: QueryOptions(
+              document: gql(QUERY),
+              variables: const {
+                'filter': {
+                  'bannerTypeID': 2,
+                  'status': [
+                    'online',
+                  ],
+                  'platform': 'app',
+                },
+                'isShuffle': true,
+                'limit': 200,
+                'page': 1,
+              },
+            ),
+            builder: (QueryResult result, {fetchMore, refetch}) {
+              if (result.hasException) {
+                return Text(result.exception.toString());
+              }
+
+              if (result.isLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              print('result----:: ${result.data}');
+              return ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: urls.length,
+                itemBuilder: (context, index) {
+                  return CompanyView(
+                    source: urls[index],
+                  );
+                },
               );
             },
           ),

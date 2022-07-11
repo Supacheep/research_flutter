@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'package:my_app_flutter/datamodels/user_location.dart';
-import 'package:my_app_flutter/screens/home.dart';
-import 'package:my_app_flutter/screens/myJobs.dart';
-import 'package:my_app_flutter/screens/map.dart';
+import 'package:my_app_flutter/views/home.dart';
+import 'package:my_app_flutter/views/myJobs.dart';
+import 'package:my_app_flutter/views/map.dart';
 import 'package:my_app_flutter/service/location_service.dart';
 import 'package:my_app_flutter/utilities/hexColor.dart';
 import 'package:my_app_flutter/hoc/lifecycle_manager.dart';
+import 'package:my_app_flutter/responsive/dimensions.dart';
 
 void main() {
-  runApp(const MyApp());
+  final HttpLink httpLink =
+      HttpLink("https://beta-api-upgrade.jobthai.com/v1/graphql/");
+
+  ValueNotifier<GraphQLClient> client = ValueNotifier(
+    GraphQLClient(
+      link: httpLink,
+      cache: GraphQLCache(store: InMemoryStore()),
+    ),
+  );
+
+  var app = GraphQLProvider(
+    client: client,
+    child: const MyApp(),
+  );
+  runApp(app);
 }
 
 class MyApp extends StatelessWidget {
@@ -84,11 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: currentWidth < mobileWidth,
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: Colors.transparent,
+              backgroundColor: currentWidth < mobileWidth
+                  ? Colors.transparent
+                  : Colors.white,
               elevation: 0,
               centerTitle: true,
               title: const Text(
