@@ -1,0 +1,230 @@
+{
+  "allJobs": [
+    {
+      "id": 1,
+      "name": { "th": "กรุงเทพและปริมณฑล", "en": "Bangkok Area" },
+      "query": { "region": "6" },
+      "paramSearch": { "region": "6" }
+    },
+    {
+      "id": 2,
+      "name": { "th": "ภาคตะวันออก", "en": "Eastern" },
+      "query": { "region": "4" },
+      "paramSearch": { "region": "4" }
+
+    },
+    {
+      "id": 3,
+      "name": { "th": "งานนิคมอุตสาหกรรม", "en": "Industrial Estate" },
+      "query": { "industrial": "all" },
+      "paramSearch": { "industrial": "all" }
+    },
+    {
+      "id": 4,
+      "name": { "th": "ภาคกลาง", "en": "Central" },
+      "query": { "region": "3" },
+      "paramSearch": { "region": "3" }
+    },
+    {
+      "id": 5,
+      "name": { "th": "ภาคตะวันออกเฉียงเหนือ", "en": "Northeastern" },
+      "query": { "region": "2" },
+      "paramSearch": { "region": "2" }
+    },
+    {
+      "id": 6,
+      "name": { "th": "Work from Home", "en": "Work from Home" },
+      "query": { "wfh": true },
+      "paramSearch": { "tags": "WFH" }
+    },
+    {
+      "id": 7,
+      "name": { "th": "Online Interview", "en": "Online Interview" },
+      "query": { "onlineinterview": true },
+      "paramSearch": { "tags": "Online Interview" }
+    },
+    {
+      "id": 8,
+      "name": { "th": "ภาคเหนือ", "en": "Northern" },
+      "query": { "region": "1" },
+      "paramSearch": { "region": "1" }
+    },
+    {
+      "id": 9,
+      "name": { "th": "ภาคใต้", "en": "Southern" },
+      "query": { "region": "5" },
+      "paramSearch": { "region": "5" }
+    },
+    {
+      "id": 10,
+      "name": { "th": "สมุทรปราการ", "en": "Samut Prakan" },
+      "query": { "province": "59"},
+      "paramSearch": { "province": "59"}
+    },
+    {
+      "id": 11,
+      "name": { "th": "ชลบุรี", "en": "Chon Buri" },
+      "query": { "province": "09"},
+      "paramSearch": { "province": "09"}
+    },
+    {
+      "id": 12,
+      "name": { "th": "เชียงใหม่", "en": "Chiang Mai" },
+      "query": { "province": "14" },
+      "paramSearch": { "province": "14" }
+    },
+    {
+      "id": 13,
+      "name": { "th": "นครราชสีมา", "en": "Nakhon Ratchasima" },
+      "query": { "province": "21" },
+      "paramSearch": { "province": "21" }
+    },
+    {
+      "id": 14,
+      "name": { "th": "ภูเก็ต", "en": "Phuket" },
+      "query": { "province": "41" },
+      "paramSearch": { "province": "41" }
+    },
+    {
+      "id": 15,
+      "name": { "th": "สาทร", "en": "Sathorn" },
+      "query": { "district": "0145" },
+      "paramSearch": { "district": "0145" }
+    },
+    {
+      "id": 16,
+      "name": { "th": "สีลม", "en": "Silom" },
+      "query": { "subdistrict": "012504" },
+      "paramSearch": { "subdistrict": "012504" }
+    },
+    {
+      "id": 17,
+      "name": { "th": "สุขุมวิท", "en": "Sukhumvit" },
+      "query": { "mststation": "1360977" },
+      "paramSearch": { "mststation": "1360977" }
+    },
+    {
+      "id": 18,
+      "name": { "th": "รังสิต", "en": "Rangsit" },
+      "query": { "keyword": "รังสิต" },
+      "paramSearch": { "keyword": "รังสิต" }
+    },
+    {
+      "id": 19,
+      "name": { "th": "นิคมฯอมตะนคร", "en": "Amata Nakorn Industrial Estate" },
+      "query": { "industrial": "1283169" },
+      "paramSearch": { "industrial": "1283169" }
+    },
+    {
+      "id": 20,
+      "name": { "th": "นิคมฯบางปู", "en": "Bangpoo Industrial Estate" },
+      "query": { "industrial": "1283164" },
+      "paramSearch": { "industrial": "1283164" }
+    }
+  ],
+  "highlightJobs": [
+    {
+      "id": 1,
+      "name": { "th": "ขาย", "en": "Sale" },
+      "query": { "jobtype": 4 },
+      "paramSearch": { "jobtype": 4 }
+    },
+    {
+      "id": 2,
+      "name": { "th": "ธุรการ", "en": "Administrative" },
+      "query": { "jobtype": 9 },
+      "paramSearch": { "jobtype": 9 }
+    },
+    {
+      "id": 3,
+      "name": { "th": "บัญชี", "en": "Accounting" },
+      "query": { "jobtype": 15 },
+      "paramSearch": { "jobtype": 15 }
+    },
+    {
+      "id": 4,
+      "name": { "th": "ควบคุมคุณภาพ", "en": "QC/QA" },
+      "query": { "jobtype": 17 },
+      "paramSearch": { "jobtype": 17 }
+    },
+    {
+      "id": 5,
+      "name": { "th": "วิศวกร", "en": "Engineering" },
+      "query": { "jobtype": 28 },
+      "paramSearch": { "jobtype": 28 }
+    },
+    {
+      "id": 6,
+      "name": { "th": "การตลาด", "en": "Marketing" },
+      "query": { "jobtype": 2 },
+      "paramSearch": { "jobtype": 2 }
+    },
+    {
+      "id": 7,
+      "name": { "th": "Programmer", "en": "Programmer" },
+      "query": { "jobtype": 7 },
+      "paramSearch": { "jobtype": 7 }
+    },
+    {
+      "id": 8,
+      "name": { "th": "Logistics", "en": "Logistics" },
+      "query": { "jobtype": 6 },
+      "paramSearch": { "jobtype": 6 }
+    },
+    {
+      "id": 9,
+      "name": { "th": "ฝ่ายบุคคล", "en": "HR" },
+      "query": { "jobtype": 16 },
+      "paramSearch": { "jobtype": 16 }
+    },
+    {
+      "id": 10,
+      "name": { "th": "การเงิน-ธนาคาร", "en": "Finance-Banking" },
+      "query": { "jobtype": 42 },
+      "paramSearch": { "jobtype": 42 }
+    },
+    {
+      "id": 11,
+      "name": { "th": "Part-time", "en": "Part-time" },
+      "query": { "jobtype": 40 },
+      "paramSearch": { "jobtype": 40 }
+    },
+    {
+      "id": 12,
+      "name": { "th": "Mobile Developer", "en": "Mobile Developer" },
+      "query": { "subjobtype": 144 },
+      "paramSearch": { "subjobtype": 144 }
+    },
+    {
+      "id": 13,
+      "name": { "th": "อสังหาริมทรัพย์", "en": "Real Estate" },
+      "query": { "businesstype": 37 },
+      "paramSearch": { "businesstype": 37 }
+    },
+    {
+      "id": 14,
+      "name": { "th": "ยานยนต์", "en": "Automotive" },
+      "query": { "businesstype": 28 },
+      "paramSearch": { "businesstype": 28 }
+    },
+    {
+      "id": 15,
+      "name": { "th": "ภาษาจีน", "en": "Chinese" },
+      "query": { "keyword": "ภาษาจีน" },
+      "paramSearch": { "keyword": "ภาษาจีน" }
+    },
+    {
+      "id": 16,
+      "name": { "th": "กราฟิก", "en": "Graphic" },
+      "query": { "jobtype": 30 },
+      "paramSearch": { "jobtype": 30 }
+    },
+    {
+      "id": 17,
+      "name": { "th": "นักศึกษาจบใหม่", "en": "New Graduates" },
+      "query": { "keyword": "นักศึกษาจบใหม่" },
+      "paramSearch": { "keyword": "นักศึกษาจบใหม่" }
+    }
+  ]
+}
+

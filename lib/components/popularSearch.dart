@@ -24,6 +24,17 @@ class PopularSearch extends StatelessWidget {
         bottom: 10.0,
       ),
       clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: HexColor.fromHex('#F0F0F0'),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 7,
+          )
+        ],
+      ),
       child: Column(
         children: <Widget>[
           Align(
@@ -96,17 +107,6 @@ class PopularSearch extends StatelessWidget {
                     )),
               ),
             ],
-          )
-        ],
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: HexColor.fromHex('#F0F0F0'),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 7,
           )
         ],
       ),

@@ -34,34 +34,35 @@ class CompanyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => JobList(source: source)),
-          );
-        },
-        child: Container(
-          height: 90,
-          width: 90,
-          clipBehavior: Clip.hardEdge,
-          child: Image.network(
-            source,
-            fit: BoxFit.cover,
-          ),
-          margin: const EdgeInsets.only(
-              left: 5.0, top: 10.0, right: 5.0, bottom: 10.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(45),
-            color: Colors.grey,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 7,
-              )
-            ],
-          ),
-        ));
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => JobList(source: source)),
+        );
+      },
+      child: Container(
+        height: 90,
+        width: 90,
+        clipBehavior: Clip.hardEdge,
+        margin: const EdgeInsets.only(
+            left: 5.0, top: 10.0, right: 5.0, bottom: 10.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(45),
+          color: Colors.grey,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 7,
+            )
+          ],
+        ),
+        child: Image.network(
+          source,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }
 
@@ -101,16 +102,6 @@ class TopCompany extends StatelessWidget {
         ),
         SizedBox(
           height: 110,
-          // child: ListView.builder(
-          //   shrinkWrap: true,
-          //   scrollDirection: Axis.horizontal,
-          //   itemCount: urls.length,
-          //   itemBuilder: (context, index) {
-          //     return CompanyView(
-          //       source: urls[index],
-          //     );
-          //   },
-          // ),
           child: Query(
             options: QueryOptions(
               document: gql(QUERY),
@@ -137,7 +128,7 @@ class TopCompany extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               }
-              print('result----:: ${result.data}');
+
               return ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,

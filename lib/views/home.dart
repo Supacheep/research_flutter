@@ -4,6 +4,7 @@ import 'package:my_app_flutter/components/popularSearch.dart';
 import 'package:my_app_flutter/views/jobList.dart';
 import 'package:my_app_flutter/responsive/responsive_layout.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:my_app_flutter/components/home/keywordTag.dart';
 
 const getPositionsCount = '''
   query {
@@ -53,7 +54,7 @@ class HomeScreenMobile extends StatelessWidget {
               switch (index) {
                 case 0:
                   {
-                    return Container(child: const TopCompany());
+                    return const TopCompany();
                   }
                 case 1:
                   {
@@ -86,77 +87,84 @@ class HomeScreenTablet extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-            width: currentWidth,
-            child: Container(
-              child: Image.network(
-                src,
-                fit: BoxFit.cover,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+              width: currentWidth,
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.grey,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 7,
+                    )
+                  ],
+                ),
+                child: Image.network(
+                  src,
+                  fit: BoxFit.cover,
+                  width: currentWidth * 0.7,
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+              width: currentWidth,
+              child: Container(
                 width: currentWidth * 0.7,
-              ),
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.grey,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 7,
-                  )
-                ],
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-            width: currentWidth,
-            child: Container(
-              width: currentWidth * 0.7,
-              height: 80,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    "https://www.jobthai.com/static/images/keyart.png",
+                height: 80,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      "https://www.jobthai.com/static/images/keyart.png",
+                    ),
                   ),
                 ),
-              ),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Query(
-                  options: QueryOptions(
-                    document: gql(getPositionsCount),
-                  ),
-                  builder: (QueryResult result, {fetchMore, refetch}) {
-                    if (result.hasException) {
-                      return Text(result.exception.toString());
-                    }
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Query(
+                    options: QueryOptions(
+                      document: gql(getPositionsCount),
+                    ),
+                    builder: (QueryResult result, {fetchMore, refetch}) {
+                      if (result.hasException) {
+                        return Text(result.exception.toString());
+                      }
 
-                    if (result.isLoading) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+                      if (result.isLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      final positionCount = result.data?['getPositionsCount']
+                          ?['data']?['total']?['positions'];
+                      return Text(
+                        'งานทั้งหมด $positionCount อัตรา',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       );
-                    }
-                    final positionCount = result.data?['getPositionsCount']
-                        ?['data']?['total']?['positions'];
-                    return Text(
-                      'งานทั้งหมด $positionCount อัตรา',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    );
-                  },
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            Container(
+              width: currentWidth * 0.7,
+              child: KeywordTag(),
+            )
+          ],
+        ),
       ),
     );
   }
